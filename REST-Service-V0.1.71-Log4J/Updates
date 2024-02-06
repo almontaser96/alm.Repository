@@ -1,0 +1,9 @@
+//Updates
+
+1- APIs Updated.
+2- tow more feilds added to user Entity.
+3-isAccountNonExpired of user Entity is implemented.
+2-Accounts Expiration Implemented.
+3-system out is more Detailed.
+4-Get authorities of userEntity is Implemented and moved from user service class. 
+5-POM is down graded to 3.0.0 because 3.0.2 has 2 CVMs.

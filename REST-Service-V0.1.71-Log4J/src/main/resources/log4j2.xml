@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="LOG_PATTERN">AT:%d{dd-MM-yyyy HH:mm:ss}[ %t] [%p] %m%n</Property>
+		<Property name="APP_LOG_ROOT">c:/temp</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<RollingFile name="appLog"
+			fileName="${APP_LOG_ROOT}/SpringBoot2App/REST-Service-RequestRespnse.log"
+			filePattern="${APP_LOG_ROOT}/SpringBoot2App/application-%d{dd-MM-yyyy}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="19500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+		</RollingFile>
+		<RollingFile name="REST-Service"
+			fileName="${APP_LOG_ROOT}/SpringBoot2App/REST-Service.log"
+			filePattern="${APP_LOG_ROOT}/SpringBoot2App/application-%d{dd-MM-yyyy}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="19500KB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="com.RESTService.Service.AuthService" additivity="true">
+			<AppenderRef ref="appLog" />
+		</Logger>
+		<Logger name="com.RESTService" additivity="true" level="debug">
+			<AppenderRef ref="REST-Service"/>
+		</Logger>
+		<Root level="info">
+			<AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+</Configuration>
